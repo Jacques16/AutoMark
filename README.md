@@ -10,11 +10,8 @@ ____https://github.com/Jacques16/Uxia/tree/main/docs/example____
 this version is a copyright (c) 2023 - 2024. Released under the MIT License. it is free and open source.
 
 ## UTILISATION 
-Educative or Personal use (still not stable and limited.)
-
-## DEV NOTE 
-Actually, this project is still in development. Maybe and hopefully over time it will be able to accomplish the unimaginable and push the boundaries of web development.
+Educative, Personal, Artistic use
 
 ## CONTACT
-Contact me for questions or update ideas :? jacqueslyard@yahoo.fr 
+hollà me for questions, bug or update ideas.
 
