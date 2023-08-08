@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title></title>
+ <style>
+  img {
+   width: 100%;
+   margin-top: 50px;
+   border-radius: 20px;
+  }
+ </style>
+</head>
+
+<body>
+ <view-marker></view-marker>
+ <script src="/res/demo.uxia.js"></script>
+ <script>
+  const app = new Uxia({
+   data: {
+    path: ''
+   },
+   frames: {
+    //on-value is a native attribute name
+    //it will watch for changes && will insert the value in data>path
+    'input.on-value': ['path'],
+    'input.style': ['border: 5px solid #000'],
+    'input.placeholder': 'search image in nike folder',
+    'div.img.src': '{{ src }}',
+   },
+   methods: {
+    //src will automatically be updated because it is a {{ dynamic }} value 
+    src() {
+     return !this.path ? '' : '/nike/' + this.path
+    }
+   }
+  })
+
+
+ 
+ </script>
+</body>
+
+</html>

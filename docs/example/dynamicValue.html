@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title></title>
+</head>
+
+<body>
+ <view-marker></view-marker>
+ <script src="/res/demo.uxia.js"></script>
+ <script>
+  const app = new Uxia({
+   data: {
+    header: {
+     h1: "Uxia.js",
+    },
+    text: {
+     p: "Happiness makes up in height what it lacks in length.",
+     btn: {
+      change: "change the title"
+     }
+    }
+   },
+   frames: {
+    h1: "{{ header.h1 }}",
+    p: "{{ text.p }}",
+    button: {
+     /**
+
+     * [[ Info ]]
+
+     * There are 3 ways to insert text
+
+     *
+
+     * [1] •• p: "txt"
+
+     * By default, textContent will be responsible for displaying this text
+
+     *
+
+     * [2] •• innerHTML/innerText/textContent
+
+     * However, it can overwrite other texts and even Uxia elements if these elements are children. So, make sure that no other "Uxians" HTML elements are trapped.
+     *
+     * [3] •• whole text
+     * Recommended if it is only plain text
+     *
+     * */
+
+     wholeText: "{{ text.btn.change }}",
+     onclick() {
+      //!Please, do not use this syntax
+      //=>this.frames.h1 = this.text.p
+      /**
+       * because h1 content is {{ header.h1 }} so you must update header.h1 to change it. 
+       *
+       * **/
+      //[1] Use this instead 
+      this.header.h1 = this.text.p
+      //[2] or
+      this.header.h1 = "{{ text.p }}"
+     }
+    }
+   }
+  })
+ </script>
+</body>
+
+</html>
