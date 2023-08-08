@@ -2,7 +2,7 @@ docs.integration =  {
   title: '1 • Integration',
   text: `To embed Uxia in your document, you must use the <code>script</code> tag, as in this example.
   `,
-  code: `<script src="res/demo.uxia.js"><\/script>`,
+  code: `<script src="https://github.com/Jacques16/Uxia/blob/main/res/demo.uxia.js"><\/script>`,
   type: 'html'
  }
  
