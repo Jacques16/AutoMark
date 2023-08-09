@@ -16,6 +16,7 @@ docs.integration =  {
       frames: {
        h1: "Uxia",
        p: "Happiness makes up in height what it lacks in length."
+       }
     })`,
    type: 'js'
  }
