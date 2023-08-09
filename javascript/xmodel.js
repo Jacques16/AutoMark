@@ -32,8 +32,8 @@
    
    `,
    code: `var app = new Uxia({
+   name: 'xm',
     frames: {
-    name: 'xm',
      div: {
       h1: 'Hello world',
       p: 'some text',
