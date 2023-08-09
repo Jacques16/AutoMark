@@ -16,7 +16,7 @@
 
 <body>
  <view-marker></view-marker>
- <script src="/Uxia-main/res/demo.uxia.js"></script>
+ <script src="/res/demo.uxia.js"></script>
  <script>
   const app = new Uxia({
    data: {
@@ -33,7 +33,7 @@
    methods: {
     //src will automatically be updated because it is a {{ dynamic }} value 
     src() {
-     return !this.path ? '' : '/Uxia-main/nike/' + this.path
+     return !this.path ? '' : '/nike/' + this.path
     }
    }
   })
