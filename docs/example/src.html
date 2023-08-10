@@ -33,17 +33,10 @@
    overflow: scroll
   }
 
-  .img-preview {
-   displa: flex !important;
-   align-items: center !important;
-   justify-content: center;
-  }
-
   .tubmail {
    height: 50px;
    width: 50px;
    margin: 0 !important;
-   argin-top: 20px;
    object-fit: cover;
    border-radius: 20px;
   }
@@ -56,9 +49,7 @@
    right: 0;
    left: 0;
    height: 0px;
-   backgroun: red;
-   transition: .4s ease-in-out;
-   displa: flex !important;
+   transition: .6s ease-out;
    align-items: flex-end;
    justify-content: center;
    z-index: 999 !important
@@ -72,6 +63,10 @@
    right: 0;
    margin: 10px !important;
 
+  }
+  
+  .input-group-text {
+   font-family: monospace
   }
  </style>
 </head>
@@ -88,9 +83,9 @@
    "div.table.thead.tr.innerHTML": ` 
       <th scope="col">#</th>
    <th scope="col">image</th>
-             <th scope="col">Titre</th>
+             <th scope="col">title</th>
              <th scope="col">date</th>
-             <th scope="col">taille</th>`,
+             <th scope="col">size</th>`,
    "div.table.tbody": {
     xmodel: "target",
     tr: []
@@ -164,7 +159,7 @@
      this.error = true;
      this.modal.style = "height:120px";
      this.frames.divAlert = warn(`${error}`, type);
-     Uxia.$_setTimeout(function() {
+     Uxia.setTimeout(function() {
       this.hide()
      }, 3000);
     },
