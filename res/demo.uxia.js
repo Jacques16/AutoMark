@@ -320,9 +320,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }, this.value);
     }
     
-    if (mark.id && getid(mark.id)) {
+    if (mark.id && getid(md5(mark.id))) {
       path.shift();
-      return newElement.call(this, path, getid(mark.id));
+      return newElement.call(this, path, getid(md5(mark.id)));
     } else {
       //setValue *______*
       //we supposed its just a string for the moment
@@ -1528,16 +1528,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     var name = row.name;
     var id = row.bind;
     var elem;
+    var m;
     if (name !== "" && isString(name)) {
       elem = name === "IMG" ? new Image() : document.createElement(name);
     }
     if (id !== "") {
       if (!id.match(/^(auto|Default|\$)/g)) {
         id = id.toLowerCase();
-        id = this.md5(id)
+        m = md5(id)
       } else {}
       
-      elem.setAttribute('id', id);
+      elem.setAttribute('id', m);
       
       if (!data.elements[indexOfArg]) {
         data.elements[indexOfArg] = {};
@@ -2672,7 +2673,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         if (Array.isArray(isidRoot) && isidRoot.length && isidRoot[2]) {
           isidRoot[2] = '_' + index + isidRoot[2];
         }
+        
         exist = isidRoot ? data.elements[index].hasOwnProperty(isidRoot[2]) : null;
+        
+        
+        
+        
+        
         autoProp.id = data.call;
         if (exist) {
           e = getid(data.elements[index][isidRoot[2]].id);
@@ -2695,11 +2702,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             if (!e.classList.contains(classMark)) {
               e.classList.add(classMark);
             }
-            /*
-            return {
-              v: e.style = prop
-            };
-            /**/
             e.style = prop
           }
         } else if (classType && classType.length === 3) {
