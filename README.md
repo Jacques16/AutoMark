@@ -1,10 +1,13 @@
 ##     CODE HTML IN JS WITH UXIA       ##
-_________________________________________
+
 
 ## GUIDE 
+source file
+__https://github.com/Jacques16/Uxia/blob/main/res/demo.uxia.js__
+
 Please, check the documentation
-____https://github.com/Jacques16/Uxia/blob/main/docs/Integration.html____
-____https://github.com/Jacques16/Uxia/tree/main/docs/example____
+__https://github.com/Jacques16/Uxia/blob/main/docs/Integration.html__
+__https://github.com/Jacques16/Uxia/tree/main/docs/example__
 
 ## LICENCE 
 this version is a copyright (c) 2023 - 2024. Released under the MIT License. it is free and open source.
