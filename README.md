@@ -11,7 +11,7 @@ To use AutoMark in your project, follow these simple steps:
 1. Download the `automark.js` file from the AutoMark GitHub repository.
 2. Integrate it into your HTML page by adding the following `<script> tag in the <head> section or at the end of your HTML file:`
 
-`<script src="path/to/automark.js"></script> `
+`<script src="main/AutoMark.js"></script> `
 
 ## How to instantiate AutoMark 
 
