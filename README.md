@@ -1,7 +1,3 @@
-# Why should I use this ?
-
-If you want to simplify web development. Try **AutoMark**. The JavaScript framework that lets you **generate HTML** using **pure JavaScript**. **Faster**, **lighter**, more **powerful.** 🚀
-
 # AutoMark Documentation
 
 ## Introduction
