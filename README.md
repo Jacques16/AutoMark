@@ -15,7 +15,7 @@ To use AutoMark in your project, follow these simple steps:
 2. Integrate it into your HTML page by adding the following `<script>` tag in the `<head>` section or at the end of your HTML file:
 
 ```html
-<script src="chemin/vers/automark.js"></script> 
+<script src="https://github.com/Jacques16/AutoMark/blob/main/main/AutoMark.js"></script> 
 ```
 
 ## How to instantiate AutoMark 
@@ -228,15 +228,15 @@ However, if you want to create an attribute, custom or not, you just have to put
 myAttribute: ["info"]
 ```
 ## Router
-Automark integrates the Page.js library for route management because it is lightweight, offers extensive possibilities, and is easy to use. Visit the Page.js documentation if needed.
+Automark integrates the [Page.js](http://visionmedia.github.com/page.js) library for route management because it is lightweight, offers extensive possibilities, and is easy to use. Visit the Page.js [documentation](https://github.com/visionmedia/page.js.git) if needed.
 
 ```html
 <head></head>
 <body>
 <div id="#app"></div>
 </body>
-<script src="page.js"></script>
-<script src="AutoMark.js"></script>
+<script src="http://visionmedia.github.com/page.js"></script>
+<script src="https://github.com/Jacques16/AutoMark/blob/main/main/AutoMark.js"></script>
 ```
 
 
