@@ -1,5 +1,5 @@
 
-![illustration](logo/finn-the-human-fill.png)
+![illustration](https://github.com/Jacques16/AutoMark/blob/main/logo/uxi.png)
 
 # AutoMark Documentation
 
