@@ -15,7 +15,7 @@ To use AutoMark in your project, follow these simple steps:
 2. Integrate it into your HTML page by adding the following `<script>` tag in the `<head>` section or at the end of your HTML file:
 
 ```html
-<script src="https://github.com/Jacques16/AutoMark/blob/main/main/AutoMark.js"></script> 
+<script src="https://github.com/Jacques16/AutoMark/blob/c6de0804d452c6d1cc3053f295e397f5b8577b0b/res/AutoMark.min.js"></script> 
 ```
 
 ## How to instantiate AutoMark 
@@ -236,7 +236,7 @@ Automark integrates the [Page.js](http://visionmedia.github.com/page.js) library
 <div id="#app"></div>
 </body>
 <script src="http://visionmedia.github.com/page.js"></script>
-<script src="https://github.com/Jacques16/AutoMark/blob/main/main/AutoMark.js"></script>
+<script src="https://github.com/Jacques16/AutoMark/blob/c6de0804d452c6d1cc3053f295e397f5b8577b0b/res/AutoMark.min.js"></script>
 ```
 
 
