@@ -14,7 +14,7 @@
 
 </picture>
 
-<h1 align="center">AutoMark.js </h1>
+
 
 </a>
 
