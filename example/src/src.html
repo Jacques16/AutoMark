@@ -31,7 +31,7 @@
    frames: {
     //on-update will watch if input value was changed and it will be insert in [ ´path´ ]
     'input.on-value': ['bind.path'],
-    'input.placeholder': ['`logo.png` is available ... '],
+    'input.placeholder': ['`uxi.png` is available ... '],
   
     // {{ src() }} is a function who return image path
     'div.img.src': '{{ src() }}',
@@ -42,7 +42,7 @@
     // note: Here, Automark control {{ src() }} It will be executed as much as necessary to update the data.
     //Here `src` is mentioned 2 time
     src() {
-     return 'res/logo/' + this.bind.path
+     return 'logo/' + this.bind.path
     }
    }
   })
