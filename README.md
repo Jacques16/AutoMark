@@ -2,7 +2,7 @@
 <p align="center">
   <a href="#">
     <picture>
-      <sour<p align="center">
+      <p align="center">
 
 <a href="#">
 
@@ -83,8 +83,8 @@ const app = new AutoMark({
 ```
 The generated HTML code will be:
 ```html
-<h1> Titre de la page </h1>
-<p> Contenu de la page </p>
+<h1> Page Title </h1>
+<p> Page Content </p>
  ```
 
 ## Components
