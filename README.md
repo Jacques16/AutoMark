@@ -35,7 +35,7 @@ To use AutoMark in your project, follow these simple steps:
 2. Integrate it into your HTML page by adding the following `<script>` tag in the `<head>` section or at the end of your HTML file:
 
 ```html
-<script src="https://github.com/Jacques16/AutoMark/blob/c6de0804d452c6d1cc3053f295e397f5b8577b0b/res/AutoMark.min.js"></script> 
+<script src="res/AutoMark.js"></script> 
 ```
 
 ## How to instantiate AutoMark 
@@ -45,7 +45,7 @@ Once you've integrated `automark.js` into your HTML page, you can instantiate Au
 ```javascript 
 const app = new AutoMark({
  //Define your AutoMark configuration here
- name: " ... ",
+ name: " ... ", // or el: " ... "
  data: { ... },
  frames: { ... }
 });
@@ -256,14 +256,14 @@ Automark integrates the [Page.js](http://visionmedia.github.com/page.js) library
 <div id="#app"></div>
 </body>
 <script src="http://visionmedia.github.com/page.js"></script>
-<script src="https://github.com/Jacques16/AutoMark/blob/c6de0804d452c6d1cc3053f295e397f5b8577b0b/res/AutoMark.min.js"></script>
+<script src="res/AutoMark.js"></script>
 ```
 
 
 Please ensure that page.js is properly integrated into your page. Here's what you need to know to use the page.js routing system from AutoMark:
 
 - **``page:``** As soon as this key is detected in the parameters, and the `page.js` library is detected in the document, page.js is executed.
-- **``routes:``** Used to define the main route parameters, it must be an array containing an object: ``path`` is the path, ``temp`` is the element to load, and ``name`` is the route name.
+- **``routes:``** Used to define the main route parameters, it must be an array containing an object: ``path`` is the url to the routes, ``temp`` is the template to load, and ``name`` is the route name.
 - **``view:``** Used to define the address in frames where the route should be loaded.
 
 To open and launch your route, use the ``page(path)`` function provided for this purpose.
