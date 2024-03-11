@@ -3,8 +3,8 @@
  * AutoMark.js v0.0.3
  * (c) copyright 2023-2024 RAKOTOMAMONJY Jacques Lyard
  * Released under the MIT License.
- * git: https://github.com/Jacques16/AutoMark
- * Jacqueslyard@yahoo.fr
+ * https://github.com/Jacques16/AutoMark
+ * 
  *
  */
 (function(global, factory) {
@@ -393,8 +393,7 @@
   'whole': 'wholeText',
   'model': 'xmodel',
  };
-
-
+/*
  HTMLElement.prototype.addText = function(proto, content, iarg) {
   let element;
   if (proto === uadd.text || proto === uadd.write || proto === uadd.whole) {
@@ -426,6 +425,7 @@
    return isString(this.value) ? this.e.addText(this.key, this.value, this.indexOfArg) : false;
   }
  }
+ /***/
  String.prototype.change = function(array, to, bool) {
   let method = 'replaceAll';
   let str = this;
@@ -496,7 +496,38 @@
   const realfn = qx.match(paramggxp)
   return realfn
  }
+ 
+ function eachObjValue (obj, callBack) {
+ if(typeof obj !== 'object') {
+  return
+ }
+ function fn (_obj) {
+  Object.keys(_obj).forEach((v) => {
+   if(typeof _obj[v] !== 'object') {
+    callBack(_obj[v], _obj, v)
+   } else {
+    fn(_obj[v])
+   }
+  })
+ }
+ return fn(obj)
+}
 
+   function _return$Replace$Val(vcm) {
+    var _value = vcm.value;
+    var row = vcm.row
+    const isvar = isString(_value) ? _value.match(defaultTagRE) : _value[type[1]];
+    if (isvar) {
+     for (let i = 0; i < isvar.length; i++) {
+      var obj = arg[row.indexOfArg].data
+      var vm = /^\{\{(.+)\}\}/g.exec(isvar[i]);
+      var match = parsePath(vm[1].change([' ']), obj)
+      _value = _value.replace(isvar[i], match(obj));
+     }
+    }
+    return _value
+   }
+ 
  var update = {
   global: function global(globaldata, a, b) {
 
@@ -523,6 +554,7 @@
    if (!call) {
     return console.warn('PROBLEM');
    }
+   updaterInfo[row.indexOfArg].call = call;
    const type = row.action ? row.action.split(':') : console.error('action didn\'t defined');
 
 
@@ -871,20 +903,19 @@
     }
    }
 
-   function _return$Replace$Val(vcm) {
-    var _value = vcm.value;
-    const isvar = isString(_value) ? _value.match(defaultTagRE) : _value[type[1]];
-    if (isvar) {
-     for (let i = 0; i < isvar.length; i++) {
-      var obj = arg[row.indexOfArg].data
-      var vm = /^\{\{(.+)\}\}/g.exec(isvar[i]);
-      var match = parsePath(vm[1].change([' ']), obj)
-      _value = _value.replace(isvar[i], match(obj));
+/*
+   eachObjValue(arg[row.indexOfArg].css, function(v, ob, b) {
+     if(isString(ob[b])) {
+     ob[b] = _return$Replace$Val({
+     value: v,
+     row,
+     arg
+    })
+    
+    //ob[b] = ev.call(call, ob[b]);
      }
-    }
-    return _value
-   }
-
+   })
+/**/
    function _change$Val(mvd) {
     var _value = mvd.value;
     var row = mvd.row;
@@ -1080,7 +1111,6 @@
              bval = nameB;
             }
 
-
             setFunction.call(callData, e, (_setFunction$call = {}, _setFunction$call[event] = bval, _setFunction$call.apply = s, _setFunction$call), event, row.indexOfArg, row.nameFrames, row.output);
            }
           }
@@ -1151,9 +1181,7 @@
      row.e.style = j;
     }
    } else if (type[0] === 'class') {
-
     STR_PARSING_METH()
-
     q = row.e.className;
     j = isFunc(_value) ? _value.call(callData) : isString(_value) ? _value : console.error('_____object_____');
     if (type[1] === 'addClass') {
@@ -1308,6 +1336,7 @@
   stylesheet: function stylesheet(objStyle, autoStyle, arg) {
    if (objStyle && autoStyle && arg) {
     create.style(objStyle);
+    
     add.style(autoStyle, arg, this.iarg);
    } else {
     add.style(autoProp.style, arg, this.iarg);
@@ -1358,15 +1387,9 @@
    lastElement.append(e);
    e[i] = value;
   },
-  'style': function(_style) {
-   function style(_x) {
-    return _style.apply(this, arguments);
-   }
-   style.toString = function() {
-    return _style.toString();
-   };
-   return style;
-  }(function(styles) {
+  style: function () {
+   styles = arg[0].css;
+   stylesCopy = styles;
    for (style in styles) {
     var str = '';
     var props = styles[style];
@@ -1380,7 +1403,7 @@
       }
       autoProp.style[prop + rootKey.dir + style] = str2;
      }
-
+   
      function normalise(propStr, props, prop) {
       isUpp = upper(propStr);
       if (isUpp) {
@@ -1394,9 +1417,19 @@
     for (prop in props) {
      _loop4();
     }
-    autoProp.style[style] = str;
+
+   var foo = _return$Replace$Val({
+    value: str,
+    row: {
+     indexOfArg: 0
+    },
+    arg
+   })
+   
+   foo = ev.call(updaterInfo[0].call,  foo);
+   autoProp.style[style] = foo;
    }
-  }),
+  }
  };
 
  function tagName(str, find) {
@@ -1845,7 +1878,6 @@
    }
   }
 
-
   Object.assign(updaterInfo[indexOfArg], {
    call: {
     output: output,
@@ -2286,12 +2318,7 @@
    cleaner(autoProp.id);
   }
  }
- /*
-  *
- THIS MECANISM IS VERRY IMPORTANT STEP
- IT TRANSLATE * FRAMES AS TEXT PATH AND MAKES IT LISIBLE BY THE SYSTEM
-  *
-  **/
+
  function parsePath(path, obj) {
   const bailRE = /[^\w.$]/;
   if (bailRE.test(path)) {
@@ -2629,6 +2656,7 @@
     data.objStyle = styles;
     create.style(styles);
    }
+   
    if (!base[i][key.frames] || !Object.keys(base[i][key.frames]).length) {
     /** FOR BEGINNERS **/
    // return console.warn(key.frames + ' undefined or empty at {{' + i + '}} arguments');
@@ -3030,8 +3058,6 @@
        if (!list[i].name) {
         return console.error('`name` was not defined in `routes` path=' + list[i].path)
        }
-       //définir un attribut name dans les templates et les assigner a leurs noms
-       //temp[Object.keys(temp)[0]].name = [ list[i].name ];
        Object.assign(obj[_path18], temp);
        Object.assign(data.pageJS[i], {
         [list[k].name]: {
@@ -3067,9 +3093,9 @@
      if (id$1.length) {
       for (let i = 0; i < id$1.length; i++) {
        if (id$1[i].id === list[k].name) {
-        getid(list[k].name).style = "display: block";
+        getid(list[k].name).style = "display:block";
        } else {
-        getid(id$1[i].id).style = "display: none";
+        getid(id$1[i].id).style = "display:none";
        }
       }
      }
@@ -3077,8 +3103,8 @@
    })
   })
 
-  if (arg[0].data.$page) {
-   arg[0].data.$page = dataX[0].$page;
+  if (arg[i].data.$page) {
+   arg[i].data.$page = dataX[i].$page;
   }
  }
  _acceptContainer(['view-marker', cycle.index]);
