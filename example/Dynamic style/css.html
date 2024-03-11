@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Tuto - dynamic style</title>
+</head>
+
+<body>
+<div id="app"></div>
+<script src="AutoMark-main/res/AutoMark.js"></script>
+<script>
+//Définir les condition
+function $if (a, b) {
+ //si la variable ´e´ est true alors ´a´ sinon ´b´
+ return '[ {{ e }} ? "{{ ' + a + ' }}" : "{{ ' + b + ' }}" ]'
+}
+
+var query = new AutoMark({
+ el: '#app',
+ data: {
+  e: true,
+  red: "#FF1744",
+  green: '#00ACC1',
+  white: "#fff"
+ },
+ css: {
+  $_app: {
+   backgroundColor: $if('red', 'green'),
+   padding: '15px',
+   borderRadius: '20px',
+   maxWidth: '275px',
+  },
+  $_changer: {
+   padding: '10px 20px',
+   borderRadius: '50px',
+   border: 'none',
+   fontWeight: '900',
+   backgroundColor: $if('green', 'red'),
+   fontSize: '106%',
+   ':active': {
+    opacity: '0.5'
+   }
+  }
+ },
+ frames: {
+  divApp: {
+   h1: 'Magic Box',
+   p: 'Text',
+   buttonChanger: {
+    textContent: 'swith to [ {{ e }} ? "green" : "red" ] ',
+    onclick: function () {
+     this.e = this.e ? false : true;
+    }
+   }
+  }
+ }
+})
+</script>
+</body>
+
+</html>
