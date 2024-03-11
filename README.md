@@ -35,7 +35,7 @@ To use AutoMark in your project, follow these simple steps:
 2. Integrate it into your HTML page by adding the following `<script>` tag in the `<head>` section or at the end of your HTML file:
 
 ```html
-<script src="res/AutoMark.js"></script> 
+<script src="path/to/AutoMark.js"></script> 
 ```
 
 ## How to instantiate AutoMark 
@@ -213,7 +213,7 @@ const app = new AutoMark({
 
 
 ```
-## Style && Class
+## Style and attribute 
 
 To define a class or style, here are some methods according to your needs
 
@@ -241,22 +241,51 @@ name: "test",
 })
 ```
 
+You can also integrate your styles directly into Automark to make it more dynamic.
+
+```javascript 
+new AutoMark({
+ el: "#app",
+ data: {
+  i: true
+ },
+ //use of `css` key
+ css: {
+  $_title: {
+   //condition
+   color: '[ {{ i}} ? "res" : "blue" ]'
+  }
+ },
+ frames: {
+  h1Title: {
+   textContent: "click me",
+   //event
+   onclick () {
+    return this.i = this.i ? false : true
+   }
+  }
+ }
+})
+```
 
 However, if you want to create an attribute, custom or not, you just have to put its value in an array.
 
 ```
 myAttribute: ["info"]
 ```
+
 ## Router
 Automark integrates the [Page.js](http://visionmedia.github.com/page.js) library for route management because it is lightweight, offers extensive possibilities, and is easy to use. Visit the Page.js [documentation](https://github.com/visionmedia/page.js.git) if needed.
 
 ```html
+<meta></meta>
 <head></head>
+<title></title>
 <body>
 <div id="#app"></div>
 </body>
-<script src="http://visionmedia.github.com/page.js"></script>
-<script src="res/AutoMark.js"></script>
+<script src="path/to/page.js"></script>
+<script src="path/to/AutoMark.js"></script>
 ```
 
 
@@ -313,7 +342,7 @@ var app = new AutoMark({
   // Define the structure of HTML elements
   frames: {
     // Define where the routes will be inserted
-    divViewRooter: { },
+    divViewRooter: "", // Must not be a object 
     // Define the content of the main DIV
     div: {
       h1: "How to use page.js with AM", // Define the heading content
