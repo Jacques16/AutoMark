@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title></title>
+</head>
+
+<body>
+<div id="app"></div>
+<script src="AutoMark-main/res/AutoMark.js"></script>
+<script>
+// Condition 
+function $if (a, b) {
+// If the variable ´e´ in data is ´true´ then ´a´ is returned otherwise ´B´
+ return '[ {{ e }} ? "{{ ' + a + ' }}" : "{{ ' + b + ' }}" ]'
+}
+
+var query = new AutoMark({
+ el: '#app',
+ data: {
+  e: true,
+  red: "#FF1744",
+  green: '#00ACC1',
+  white: "#fff",
+  h: 170,
+  m: 275
+ },
+ css: {
+  $_app: {
+   backgroundColor: $if('red', 'green'),
+   padding: '15px',
+   borderRadius: '20px',
+   width: '{{ m }}px',
+   height: '{{ h }}px',
+   position: 'absolute',
+   transition: '.5s'
+  },
+  $_changer: {
+   padding: '10px 20px',
+   borderRadius: '50px',
+   border: 'none',
+   fontWeight: '900',
+   backgroundColor: $if('green', 'red'),
+   fontSize: '106%',
+   ':active': {
+     opacity: '0'
+   }
+  }
+ },
+ frames: {
+  divApp: {
+   h1: 'Magic Box',
+   p: 'Text',
+   buttonChanger: {
+    textContent: 'swith to [ {{ e }} ? "green" : "red" ] ',
+    onclick: function () {
+     this.e = this.e ? false : true;
+     this.h = this.h + 5;
+     this.m = this.m + 5;
+    }
+   }
+  }
+ }
+})
+</script>
+</body>
+
+</html>
