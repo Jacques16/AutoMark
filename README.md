@@ -247,21 +247,35 @@ You can also integrate your styles directly into Automark to make it more dynami
 new AutoMark({
  el: "#app",
  data: {
-  i: true
+  i: true,
+  size: 1000
  },
- //use of `css` key
+ // use of `css` key
  css: {
+  // $_title = *HTMLTag in `frames` + title (ex: h1Title)
   $_title: {
-   //condition
-   color: '[ {{ i}} ? "res" : "blue" ]'
+   // conditions are inside [  ] && variables inside {{ }}
+   color: '[ {{ i }} ? "red" : "blue" ]',
+   fontSize: '{{ size }}%',
+   transition: '.1s'
   }
  },
+ 
  frames: {
   h1Title: {
    textContent: "click me",
-   //event
-   onclick () {
+   // event to update `i`
+   onclick() {
+    this.size = this.size - 50
     return this.i = this.i ? false : true
+   }
+  }
+ },
+ methods: {
+  // when there are an update
+  onupdate() {
+   if(this.size == 0) {
+    this.size = 1000
    }
   }
  }
@@ -278,12 +292,6 @@ myAttribute: ["info"]
 Automark integrates the [Page.js](http://visionmedia.github.com/page.js) library for route management because it is lightweight, offers extensive possibilities, and is easy to use. Visit the Page.js [documentation](https://github.com/visionmedia/page.js.git) if needed.
 
 ```html
-<meta></meta>
-<head></head>
-<title></title>
-<body>
-<div id="#app"></div>
-</body>
 <script src="path/to/page.js"></script>
 <script src="path/to/AutoMark.js"></script>
 ```
@@ -292,12 +300,12 @@ Automark integrates the [Page.js](http://visionmedia.github.com/page.js) library
 Please ensure that page.js is properly integrated into your page. Here's what you need to know to use the page.js routing system from AutoMark:
 
 - **``page:``** As soon as this key is detected in the parameters, and the `page.js` library is detected in the document, page.js is executed.
-- **``routes:``** Used to define the main route parameters, it must be an array containing an object: ``path`` is the url to the routes, ``temp`` is the template to load, and ``name`` is the route name.
+- **``routes:``** Used to define the main route parameters, it must be an array containing an object: ``path`` to the routes, ``temp`` is the template to load, and ``name`` is the route name.
 - **``view:``** Used to define the address in frames where the route should be loaded.
 
 To open and launch your route, use the ``page(path)`` function provided for this purpose.
 
-To define the templates ``temp``, please ensure they are wrapped in a parent DIV element.
+To define the templates ``temp``, please ensure they are wrapped in a parent element.
 
 **Note:** The parameters returned by page.js are accessible from ``this.$page.params``.
 
